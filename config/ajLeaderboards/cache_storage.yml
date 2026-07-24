@@ -1,0 +1,33 @@
+# このファイルでは、キャッシュの保存先を制御できます。
+
+# 使用するストレージ方式。h2 または mysql
+# mysql を選択する場合は、以下の設定を構成する必要があります。
+#  デフォルト: h2
+method: h2
+
+
+# これらの設定は mysql を使用する場合にのみ編集する必要があります。
+ip: 127.0.0.1:3306
+username: mc
+password: password
+database: mc
+
+# 現在は mysql でのみ使用されます。
+characterEncoding: "utf8"
+
+# すでにデータベース（DB）にデータを保存した後にこれを変更すると、ajleaderboardsがデータを読み込めなくなるので注意してください。
+# その場合は、デフォルトのまま使用するか、テーブル名を新しい接頭辞（プレフィックス）に変更する必要があります。
+table_prefix: ajlb_
+
+# これらの設定は mysql 専用です。
+# これらが何のための設定か分からない場合は、デフォルトのままにしておくことを推奨します。
+minConnections: 1
+maxConnections: 20
+
+allowPublicKeyRetrieval: false
+useSSL: false
+
+
+
+# ここは変更しないでください
+config-version: 5

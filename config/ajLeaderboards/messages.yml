@@ -1,0 +1,79 @@
+signs:
+    top:
+        default:
+        - '&7&m       &r #{POSITION} &7&m       '
+        - '&6{NAME}'
+        - '&e{VALUE} {VALUENAME}'
+        - '&7&m                   '
+no-player-skin:
+    default: Superman00800
+no-player-skin-uuid:
+    default: 94dea017-71e0-4a31-ad8e-fa0aec16a4fb
+formatted:
+    k: k
+    m: m
+    t: t
+    b: b
+    q: q
+    qi: qi
+    sx: sx
+    sp: sp
+    o: o
+    n: n
+    d: d
+    ud: ud
+time:
+    w: 'w '
+    d: 'd '
+    h: 'h '
+    m: 'm '
+    s: s
+noperm: この操作を実行するための権限がありません！
+commands:
+    reload:
+        success: '&a設定ファイルをリロードしました！'
+        fail: '&c設定ファイルのリロード中にエラーが発生しました。詳細はコンソールを確認してください。'
+    export:
+        fileexists: '&cファイル &f{FILE}&c は既に存在します！'
+        starting: '&7データベースから全プレイヤーのデータを取得しています。これには少し時間がかかる場合があります。'
+        fail: '&cエクスポート中にエラーが発生しました。詳細はコンソールを確認してください。'
+        progress: '&e進捗状況: ボード取得完了 &f{DONE}&7/&f{TOTAL}'
+        success: '&aキャッシュをファイル &f{FILE}&a にエクスポートしました！'
+    viewer:
+        success: |4
+
+            &aキャッシュのアップロードが完了しました。以下から閲覧できます：&f <hover:show_text:'<yellow>クリックして移動&f {URL}'><click:open_url:'{URL}'><white><underlined>{URL}</click></hover>
+        uploading: '&7アップロード中...'
+    import:
+        nofile: '&cファイル &f{FILE}&c が存在しません！'
+        starting: '&7&f{FILE} &7からすべてのキャッシュ統計データを読み込んでいます。'
+        fail: '&cインポート中にエラーが発生しました。詳細はコンソールを確認してください。'
+        insertprogress: '&e進捗状況: ボードインポート完了 &f{DONE}&7/&f{TOTAL}'
+        success: '&aファイル &f{FILE}&a からキャッシュをインポートしました！'
+no-data:
+    lb:
+        name: '---'
+        value: '---'
+    extra: '---'
+    rel:
+        position: '{POSITION}'
+        name: '---'
+        value: '---'
+loading:
+    text: 読み込み中
+    short: -?-
+    position: ..
+    size: '...'
+updater:
+    slow-feedback: '&7アップデートを確認し、ダウンロードしています...'
+    disabled: '&cアップデーターが無効になっています！ &7アップデートをダウンロードするには、設定で有効にしてください。'
+    success: '&aアップデートのダウンロードが完了しました！ &7適用するにはサーバーを再起動してください。'
+    warnings:
+        could-not-delete-old-jar: '&aアップデートがダウンロードされましたが、&e古い jar ファイルを削除できませんでした。&7サーバーを再起動する前に古い jar ファイルを手動で削除してください。'
+    errors:
+        no-update-available: '&aすでに最新バージョンです！'
+        while-checking: '&eアップデートの確認中にエラーが発生しました。&7詳細はコンソールを確認してください。'
+        already-downloaded: '&aすでにアップデートファイルはダウンロード済みです！&7適用するにはサーバーを再起動してください。'
+        while-downloading: '&eアップデートのダウンロード中にエラーが発生しました。&7詳細はコンソールを確認してください。'
+        unknown: '&e不明なエラーが発生しました: {ERROR}'
+        uncaught: '&cコマンドの実行中にエラーが発生しました。&7詳細はコンソールを確認してください。'
