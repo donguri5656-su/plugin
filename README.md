@@ -1,6 +1,4 @@
-<p align="center">
-  <h2><del>↓ぱぱが買ってくれました</del></h2>
-</p>
+<h2 align="center"><del>↓ぱぱが買ってくれました</del></h2>
 <p align="center">
   <a href="https://youtu.be/WFtXdoajVT4">
     <img src="https://img.youtube.com/vi/WFtXdoajVT4/maxresdefault.jpg" width="200" alt="ぱぱかってー">
