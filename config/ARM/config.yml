@@ -1,0 +1,256 @@
+############################################
+#      db      `7MM"""Mq.  `7MMM.     ,MMF'#
+#     ;MM:       MM   `MM.   MMMb    dPMM  #
+#    ,V^MM.      MM   ,M9    M YM   ,M MM  #
+#   ,M  `MM      MMmmdM9     M  Mb  M' MM  #
+#   AbmmmqMA     MM  YM.     M  YM.P'  MM  #
+#  A'     VML    MM   `Mb.   M  `YM'   MM  #
+#.AMA.   .AMMA..JMML. .JMM..JML. `'  .JMML.#
+############################################
+
+# リージョンを作成する際、看板の最後の行に価格の代わりにこれらを記述することで、
+# ARMが自動的にそのリージョンの価格を計算します。
+# 「static」: ここに記述された価格がそのまま適用されます。
+# 「per_m2」: リージョンの面積（平方メートル）に価格が掛けられます。
+# 「per_m3」: リージョンの体積（立方メートル）に価格が掛けられます。
+# 自動価格（autoprice）でリージョンを作成した場合、ここで価格を変更することによって、
+# その自動価格を使用しているすべてのリージョンの価格をまとめて調整することができます。
+# 起動時に特定の自動価格設定が見つからないリージョンがある場合は、デフォルトの自動価格が使用されます。
+AutoPrice:
+  example1:
+    price: 200.0
+    extendTime: 2d
+    maxExtendTime: 7d
+    autoPriceCalculation: static
+  example2:
+    price: 2.0
+    extendTime: 12h
+    maxExtendTime: 2d
+    autoPriceCalculation: per_m2
+  example3:
+    price: 0.05
+    extendTime: 7d
+    maxExtendTime: 30d
+    autoPriceCalculation: per_m3
+
+DefaultAutoprice:
+  price: 2.0
+  extendTime: 1d
+  maxExtendTime: 7d
+  autoPriceCalculation: per_m2
+
+FlagGroups:
+  # FlagGroups（フラググループ）を使用すると、リージョンに対して自動的に
+  # フラグや優先度を割り当てることができます。また、リージョンが現在
+  # 「空き地（購入可能）」である場合、または「売却済み」である場合にのみ
+  # 適用されるフラグを定義することも可能です。
+  # 例として、土地がまだ買われていないときは全プレイヤーにドアの開閉や
+  # ボタンの使用を許可し、購入された後はオーナーとメンバーのみに制限する、
+  # といった制御が行えます。
+  # さらに、「/arm flageditor [リージョンID]」を介して、プレイヤーが独自の
+  # 特定フラグ（リージョン進入時の挨拶メッセージなど）を編集できるように
+  # 許可することも可能です。
+  # フラググループの編集は flaggroups.yml で行うことができます。
+  enabled: false
+
+# 制限グループ（Limits）は、プレイヤーに「arm.limit.制限グループ名」の権限を付与することで割り当てられます。
+# 土地の種類（regionkind）の後に上限数を記述して制限を設定します。存在しない土地の種類は無視されます。
+# 種類が設定されていないリージョンを制限したい場合は「Default」を使用します。
+# プレイヤーが所有できる総リージョン数を制限したい場合は「total」と記述します。
+# 「-1」を指定すると制限を無制限にすることができます。
+# プレイヤーが複数の制限グループを持っている場合、ARMはそれらを比較し、
+# その中で最も好条件（上限数が最大のもの）を適用します。
+# デフォルトでは、すべてのプレイヤーに制限は設定されていません。
+# 「arm.admin.bypasslimit」の権限を付与することでも、制限を無制限にできます。
+
+Limits:
+  examplegroup1:
+    total: 2
+    regionkinds:
+      Default: -1
+      starter: 1
+      small: 3
+      medium: 5
+      large: 0
+      shop: 1
+    regionkindgroups:
+      citybuild-plot: 4
+  examplegroup2:
+    total: 10
+    regionkinds:
+      Default: -1
+      starter: 1
+      small: 2
+      medium: 1
+      large: 1
+      shop: 1
+    regionkindgroups: {}
+  examplegroup3:
+    total: -1
+    regionkinds:
+      Default: -1
+      starter: 1
+      small: 2
+      medium: 2
+      large: 2
+      shop: 2
+    regionkindgroups: {}
+
+
+# 非アクティブ失効グループ（InactivityExpirationGroups）は、プレイヤーに権限「arm.inactivityexpiration.非アクティブ失効グループ名」を付与することで割り当てられます。
+# 例えば、プレイヤーに「arm.inactivityexpiration.examplegroup1」を付与すると、以下で定義されている「examplegroup1」が適用されます。
+# 非アクティブ失効（inactivityExpiration）が有効なリージョンでは、オーナーが「resetAfter」で指定された期間オンラインにならなかった場合、自動的にリセットされます。
+# リセットされる前に、リージョンのメンバーに対して新しいオーナーに引き継ぐ（立候補する）チャンスを与えることが可能です。
+# そのための猶予期間を「takeOverAfter」で指定できます。
+# プレイヤーに複数の非アクティブ失効グループが割り当てられている場合、ARMは自動的に日数が最も長く設定されているグループを適用します。
+# グループが割り当てられていない場合は「DefaultInactivityExpirationGroup」が適用されます。
+# 特定のプレイヤーの引き継ぎや自動リセットを無効化したい場合は、権限「arm.inactivityexpiration.unlimited」を付与してください。
+
+InactivityExpiration:
+  examplegroup1:
+    resetAfter: '30d'
+    takeOverAfter: '20d'
+  examplegroup2:
+    resetAfter: '60d'
+    takeOverAfter: '50d'
+  examplegroup3:
+    resetAfter: 'none'
+    takeOverAfter: 'none'
+
+DefaultInactivityExpiration:
+  resetAfter: 'none'
+  takeOverAfter: 'none'
+
+SignLinkingMode:
+  # 看板リンクモード（SignLinkingMode）でリージョンを選択する際、以下にリストされたリージョンは自動的に無視されます。
+  regionblacklist:
+    world:
+      - blacklistedTestRegionInWorld1
+      - blacklistedTestRegionInWorld2
+    world_nether:
+      - blacklistedTestRegionInWorld_nether1
+      - blacklistedTestRegionInWorld_nether2
+    world_the_end:
+      - anotherBlacklistedRegion
+
+PriceFormatting:
+  # 価格の表示形式を設定します。例:
+  # US形式: 123,456.78 のようにフォーマットされます。
+  # DE形式: 123.456,78 のようにフォーマットされます。
+  locale: US
+  # 小数点以下の最小桁数
+  minimumFractionDigits: 2
+  # 小数点以下の最大桁数
+  maximumFractionDigits: 2
+  # 整数部分の最小桁数
+  minimumIntegerDigits: 1
+
+Other:
+  # プレイヤーが「arm.member.restore」の権限を持っている場合、自身が所有するリージョンをリセットできます。
+  # 設定された値（例: 7d）は、再度リセットできるようになるまでのクールダウン時間です。
+  userResetCooldown: 7d
+  # trueに設定すると、リージョンを購入したプレイヤーは、購入完了時に自動的にそのリージョンの中央へテレポートします。
+  TeleportAfterSellRegionBought: true
+  TeleportAfterRentRegionBought: false
+  TeleportAfterRentRegionExtend: false
+  TeleportAfterContractRegionBought: true
+  TeleportAfterRegionBoughtCountdown: false
+  # レンタルリージョンを借りているプレイヤーの期限が近づいている場合、サーバー参加時に警告メッセージを表示します。
+  SendRentRegionExpirationWarning: true
+  RentRegionExpirationWarningTime: '2d'
+  SendContractRegionExtendMessage: true
+  # すべての看板の更新や、期限チェックを行う間隔（秒単位）
+  SignAndResetUpdateInterval: 2
+  # dd:日, MM:月, yyyy:年, HH:時, mm:分
+  DateTimeFormat: 'dd.MM.yyyy HH:mm'
+  # 有効にすると、タブ補完（Tabキー）でリージョン名を提案します。リージョン数が多い場合、サーバーのラグの原因になることがあります！
+  # 管理するリージョン数が比較的少ない場合にのみ、この機能を有効にすることをお勧めします。
+  CompleteRegionsOnTabComplete: true
+  # テレポートを完了するまでに待機する時間（秒単位）。カウントダウン中にプレイヤーが動くとテレポートはキャンセルされます。
+  # 0に設定するとカウントダウンなしで即座にテレポートします。権限「arm.admin.bypassteleportercooldown」を持つプレイヤーはカウントダウンが免除されます。
+  TeleporterTimer: 0
+  # /arm info を実行した際、リージョンの境界線（パーティクル）を表示します（実行したプレイヤーにのみ見えます）。
+  RegionInfoParticleBorder: true
+  # trueの場合、リージョンがリセットされたときにすべてのエンティティ（Mobなど）が削除されます。
+  RemoveEntitiesOnRegionRestore: true
+  # プラグインの言語。利用可能な言語: en, de, fr, ru, es, zh_cn, pl, uk
+  # 言語を変更したい場合は、messages.ymlファイルを削除した上で、プラグインを再読み込み/再起動すると、
+  # 指定の言語でmessagesファイルが再生成されます。
+  Language: en
+
+  # これらは、プレイヤーが看板をクリックしたときに実行されるコマンドです。
+  # 「buyaction」は、そのリージョンの購入関連アクション（期間の延長や、契約の解除など）を実行することを表します。
+  # コマンド内ではすべてのリージョン変数（%regionid% など）を使用できます。
+SignClickActions:
+  RightClickNotSneakCmd: "buyaction"
+  RightClickSneakCmd: "arm sellback %regionid%"
+  LeftClickNotSneakCmd: "arm info %regionid%"
+  LeftClickSneakCmd: "arm gui %regionid%"
+
+Backups:
+  createBackupOnRegionRestore: true
+  createBackupOnRegionUnsell: true
+
+Subregions:
+  AllowSubregionUserRestore: false
+  SubregionAutoRestore: false
+  SubregionMaxMembers: -1
+  SubregionInactivityReset: true
+  SubregionPaybackPercentage: 0
+  deleteSubregionsOnParentRegionUnsell: false
+  deleteSubregionsOnParentRegionRestore: false
+  allowParentRegionOwnersBuildOnSubregions: true
+
+Reselling:
+  Offers:
+    # 提案の有効期限（秒）
+    OfferTimeOut: 30
+
+# ここでGUIに表示されるブロック（アイテム）を変更できます。
+# 使用可能なブロックのリストは、こちら（https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html）を参照してください。
+# アイテムの名前や説明文（Lore）は messages.yml から変更できます。
+GUI:
+  RegionOwnerItem: ENDER_CHEST
+  RegionMemberItem: CHEST
+  RegionFinderItem: COMPASS
+  RegionFinderSellTypeSelectorItem: BRICK
+  GoBackItem: OAK_DOOR
+  WarningYesItem: MELON
+  WarningNoItem: REDSTONE_BLOCK
+  TPItem: ENDER_PEARL
+  SellRegionItem: DIAMOND
+  ResetItem: TNT
+  ExtendItem: CLOCK
+  InfoItem: BOOK
+  PromoteMemberToOwnerItem: LADDER
+  RemoveMemberItem: LAVA_BUCKET
+  FillItem: GRAY_STAINED_GLASS_PANE
+  ContractItem: WRITABLE_BOOK
+  SubRegionItem: GRASS_BLOCK
+  TeleportToSignItem: OAK_SIGN
+  TeleportToRegionItem: GRASS_BLOCK
+  DeleteItem: BARRIER
+  NextPageItem: ARROW
+  PrevPageItem: ARROW
+  HotelSettingItem: RED_BED
+  UnsellItem: NAME_TAG
+  EntityLimitGroupItem: CHICKEN_SPAWN_EGG
+  FlageditorItem: BANNER
+  FlagItem: SIGN
+  FlagSettingsSelectedItem: EMERALD_BLOCK
+  FlagSettingsNotSelectedItem: REDSTONE_BLOCK
+  FlagGroupSelectedItem: EMERALD_BLOCK
+  FlagGroupNotSelectedItem: REDSTONE_BLOCK
+  FlagRemoveItem: BARRIER
+  FlagUserInputItem: WRITABLE_BOOK
+  FlageditorResetItem: TNT
+  DisplayRegionOwnerButton: true
+  DisplayRegionMemberButton: true
+  DisplayRegionFinderButton: true
+# プレイヤーのスキンをMojangのサーバーから取得するため、ラグの原因になることがあります。
+  DisplayPlayerSkins: false
+
+# ここは変更しないでください
+Version: 3.5.5
+# 開発者: Alex9849
+# もしこのプラグインを気に入っていただけましたら、PayPal経由で支援することができます：https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=2Z6VVLS5SZXJS

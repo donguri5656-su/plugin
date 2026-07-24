@@ -1,0 +1,53 @@
+RegionKinds:
+  starter:
+    item: WOODEN_SHOVEL
+    displayName: '&aスターターエリア'
+    displayInLimits: true
+    displayInRegionfinder: true
+    lore:
+      - '&7初心者向けの誰でも使える土地です'
+  small:
+    item: STONE_SHOVEL
+    displayName: '&a小サイズエリア'
+    displayInLimits: true
+    displayInRegionfinder: true
+    lore:
+      - '&7少し広めで少人数での'
+      - '&7利用に最適です'
+  medium:
+    item: IRON_SHOVEL
+    displayName: '&a中サイズエリア'
+    displayInLimits: true
+    displayInRegionfinder: true
+    lore:
+      - '&7標準的な広さの使いやすい土地です'
+  large:
+    item: DIAMOND_SHOVEL
+    displayName: '&a大サイズエリア'
+    displayInLimits: true
+    displayInRegionfinder: true
+    lore:
+      - '&7とても広大な土地です'
+  shop:
+    item: EMERALD
+    displayName: '&eショップエリア'
+    displayInLimits: true
+    displayInRegionfinder: true
+    lore:
+      - '&7アイテムの販売が可能な店舗用の土地です'
+
+DefaultRegionKind:
+  displayName: デフォルト
+  item: RED_BED
+  lore:
+    - '&7標準的なエリア'
+  displayInLimits: true
+  displayInRegionfinder: false
+
+SubregionRegionKind:
+  displayName: サブエリア
+  item: PLAYER_HEAD
+  lore:
+    - '&7サベリージョン（子エリア）'
+  displayInLimits: true
+  displayInRegionfinder: false

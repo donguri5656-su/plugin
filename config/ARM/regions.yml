@@ -1,0 +1,26 @@
+Regions:
+  world:
+    shop_01:
+      sold: false
+      paybackPercentage: 0
+      isHotel: true
+      lastreset: 0
+      lastLogin: 0
+      maxMembers: -1
+      regiontype: rentregion
+      price: 100.0
+      signs:
+      - world;54.0;63.0;21.0;WALL;SOUTH
+      kind: Default
+      flagGroup: Default
+      inactivityReset: true
+      entityLimitGroup: Default
+      autorestore: true
+      allowedSubregions: 0
+      userrestorable: true
+      boughtExtraTotalEntitys: 0
+      isprotectionofcontinuance: false
+      boughtExtraEntitys: []
+      extendTime: 3600000
+      payedTill: 1784637744819
+      maxExtendTime: 172800000

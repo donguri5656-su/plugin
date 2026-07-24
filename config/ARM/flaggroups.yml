@@ -1,0 +1,312 @@
+FlagGroups:
+  examplegroup:
+    priority: 20
+    overwriteParent: true
+    available:
+      0:
+        setting: 'allow g:members'
+        editable: false
+        flag: ride
+        editPermission: ""
+        applyto: []
+      1:
+        setting: 'allow g:all'
+        editable: false
+        flag: use
+        editPermission: ""
+        applyto: []
+      2:
+        setting: 'allow g:members'
+        editable: false
+        flag: build
+        editPermission: ""
+        applyto: []
+      3:
+        setting: 'allow g:members'
+        editable: false
+        flag: block-break
+        editPermission: ""
+        applyto: []
+      4:
+        setting: 'allow g:members'
+        editable: false
+        flag: block-place
+        editPermission: ""
+        applyto: []
+      5:
+        setting: 'allow g:members'
+        editable: false
+        flag: chest-access
+        editPermission: ""
+        applyto: []
+    sold:
+      0:
+        setting: 'allow g:members'
+        editable: true
+        flag: ride
+        editPermission: ""
+        guidescription:
+          - '&2プレイヤーが乗り物（トロッコやボート等）'
+          - '&2に乗れるかどうかを設定します。'
+        applyto: []
+      1:
+        setting: 'allow g:members'
+        editable: true
+        flag: use
+        editPermission: ""
+        guidescription:
+          - '&2プレイヤーがドア、レバー、ボタン等の'
+          - '&2レッドストーン機構や家具を使用できるかを設定します。'
+        applyto: []
+      2:
+        setting: 'allow g:members'
+        editable: false
+        flag: build
+        editPermission: ""
+        applyto: []
+      3:
+        setting: 'allow g:members'
+        editable: false
+        flag: block-break
+        editPermission: ""
+        applyto: []
+      4:
+        setting: 'allow g:members'
+        editable: false
+        flag: block-place
+        editPermission: ""
+        applyto: []
+      5:
+        setting: 'allow g:members'
+        editable: false
+        flag: chest-access
+        editPermission: ""
+        applyto: []
+
+DefaultFlagGroup:
+  priority: 20
+  overwriteParent: true
+  available:
+    0:
+      setting: 'allow g:members'
+      editable: false
+      flag: ride
+      editPermission: ""
+      applyto: []
+    1:
+      setting: '%prefix%&6この土地は &2%price%%currency% &6で購入可能です。'
+      editable: false
+      flag: greeting
+      editPermission: ""
+      applyto:
+        - SellRegion
+    2:
+      setting: '%prefix%&6この土地は &2%price%%currency%&6/&2%extendtime-writtenout% &6でレンタル可能です。（最大: &2%maxextendtime-writtenout%&6）'
+      editable: false
+      flag: greeting
+      editPermission: ""
+      applyto:
+        - RentRegion
+    3:
+      setting: '%prefix%&6この土地は &2%price%%currency%&6/&2%extendtime-writtenout% &6で定額契約可能です。'
+      editable: false
+      flag: greeting
+      editPermission: ""
+      applyto:
+        - ContractRegion
+    4:
+      setting: 'allow g:all'
+      editable: false
+      flag: use
+      editPermission: ""
+      applyto: []
+    5:
+      setting: 'allow g:members'
+      editable: false
+      flag: build
+      editPermission: ""
+      applyto: []
+    6:
+      setting: 'allow g:members'
+      editable: false
+      flag: block-break
+      editPermission: ""
+      applyto: []
+    7:
+      setting: 'allow g:members'
+      editable: false
+      flag: block-place
+      editPermission: ""
+      applyto: []
+    8:
+      setting: 'allow g:members'
+      editable: false
+      flag: chest-access
+      editPermission: ""
+      applyto: []
+  sold:
+    0:
+      setting: 'allow g:members'
+      editable: true
+      flag: ride
+      editPermission: ""
+      guidescription:
+        - '&2プレイヤーが乗り物（トロッコやボート等）'
+        - '&2に乗れるかどうかを設定します。'
+      applyto: []
+    1:
+      setting: 'remove'
+      editable: true
+      flag: greeting
+      editPermission: ""
+      guidescription:
+        - '&2土地にプレイヤーが立ち入った際に表示する'
+        - '&2メッセージを設定します。'
+      applyto: []
+    2:
+      setting: 'allow g:members'
+      editable: true
+      flag: use
+      editPermission: ""
+      guidescription:
+        - '&2プレイヤーがドア、レバー、ボタン等の'
+        - '&2レッドストーン機構や家具を使用できるかを設定します。'
+      applyto: []
+    3:
+      setting: 'allow g:members'
+      editable: false
+      flag: build
+      editPermission: ""
+      applyto: []
+    4:
+      setting: 'allow g:members'
+      editable: false
+      flag: block-break
+      editPermission: ""
+      applyto: []
+    5:
+      setting: 'allow g:members'
+      editable: false
+      flag: block-place
+      editPermission: ""
+      applyto: []
+    6:
+      setting: 'allow g:members'
+      editable: false
+      flag: chest-access
+      editPermission: ""
+      applyto: []
+
+SubregionFlagGroup:
+  priority: 0
+  overwriteParent: false
+  available:
+    0:
+      setting: 'allow g:members'
+      editable: false
+      flag: ride
+      editPermission: ""
+      applyto: []
+    1:
+      setting: '%prefix%&6この土地は &2%price%%currency% &6で購入可能です。'
+      editable: false
+      flag: greeting
+      editPermission: ""
+      applyto:
+        - SellRegion
+    2:
+      setting: '%prefix%&6この土地は &2%price%%currency%&6/&2%extendtime-writtenout% &6でレンタル可能です。（最大: &2%maxextendtime-writtenout%&6）'
+      editable: false
+      flag: greeting
+      editPermission: ""
+      applyto:
+        - RentRegion
+    3:
+      setting: '%prefix%&6この土地は &2%price%%currency%&6/&2%extendtime-writtenout% &6で定額契約可能です。'
+      editable: false
+      flag: greeting
+      editPermission: ""
+      applyto:
+        - ContractRegion
+    4:
+      setting: 'allow g:all'
+      editable: false
+      flag: use
+      editPermission: ""
+      applyto: []
+    5:
+      setting: 'allow g:members'
+      editable: false
+      flag: build
+      editPermission: ""
+      applyto: []
+    6:
+      setting: 'allow g:members'
+      editable: false
+      flag: block-break
+      editPermission: ""
+      applyto: []
+    7:
+      setting: 'allow g:members'
+      editable: false
+      flag: block-place
+      editPermission: ""
+      applyto: []
+    8:
+      setting: 'allow g:members'
+      editable: false
+      flag: chest-access
+      editPermission: ""
+      applyto: []
+  sold:
+    0:
+      setting: 'allow g:members'
+      editable: true
+      flag: ride
+      editPermission: ""
+      guidescription:
+        - '&2プレイヤーが乗り物（トロッコやボート等）'
+        - '&2に乗れるかどうかを設定します。'
+      applyto: []
+    1:
+      setting: 'remove'
+      editable: true
+      flag: greeting
+      editPermission: ""
+      guidescription:
+        - '&2土地にプレイヤーが立ち入った際に表示する'
+        - '&2メッセージを設定します。'
+      applyto: []
+    2:
+      setting: 'allow g:members'
+      editable: true
+      flag: use
+      editPermission: ""
+      guidescription:
+        - '&2プレイヤーがドア、レバー、ボタン等の'
+        - '&2レッドストーン機構や家具を使用できるかを設定します。'
+      applyto: []
+    3:
+      setting: 'allow g:members'
+      editable: false
+      flag: build
+      editPermission: ""
+      applyto: []
+    4:
+      setting: 'allow g:members'
+      editable: false
+      flag: block-break
+      editPermission: ""
+      applyto: []
+    5:
+      setting: 'allow g:members'
+      editable: false
+      flag: block-place
+      editPermission: ""
+      applyto: []
+    6:
+      setting: 'allow g:members'
+      editable: false
+      flag: chest-access
+      editPermission: ""
+      applyto: []

@@ -1,0 +1,9 @@
+RegionkindGroups:
+  citybuild-plot:
+    displayName: '街づくり・建築区画'
+    displayInLimits: true
+    regionKinds:
+      - starter
+      - small
+      - medium
+      - large
